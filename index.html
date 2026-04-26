@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Masjid Nurul Firdaus</title>
+  <style>
+    /* 1. Reset total agar tidak ada scroll pada level hosting */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    /* 2. Kontainer utama dipaksa fixed mengikuti ukuran layar murni */
+    .iframe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      /* Mengangkat dasar iframe agar tidak tertutup navigation bar browser/HP */
+      bottom: env(safe-area-inset-bottom, 0px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 3. Iframe dipaksa mengisi kontainer yang sudah dikunci posisinya */
+    iframe {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      /* Menghilangkan sedikit gap di bawah yang sering muncul di Android */
+      margin-bottom: -1px; 
+    }
+
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: sans-serif;
+      font-size: 1rem;
+      color: #888;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="iframe-container">
+    <div class="loader" id="loader">Memuat Aplikasi...</div>
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbxMwBlWmCbDg3xAw5FN-yLsr3qlIusgUmDOzw5V2jO3gNZoYdo0bJK7iN5zezrBUzPc/exec" 
+      title="Masjid Nurul Firdaus"
+      onload="document.getElementById('loader').style.display='none';"
+      allow="geolocation; microphone; camera"
+      allowfullscreen>
+    </iframe>
+  </div>
+</body>
+</html>
